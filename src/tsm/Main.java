@@ -10,15 +10,14 @@ public class Main {
     public static void main(String[] args) {
 
         SortedSet<City> citySet = createCities(getCount());
+        System.out.println("Luotu " + citySet.size() + " kaupunkia.");
 
         for (City c : citySet) {
             System.out.println(c.ToString());
         }
 
         GreedyTSM gtsm = new GreedyTSM(citySet);
-        gtsm.solve();
-
-        System.out.println("Tulostettu " + citySet.size() + " kaupunkia.");
+        System.out.println(gtsm.solve());
     }
 
     private static int getCount() {
