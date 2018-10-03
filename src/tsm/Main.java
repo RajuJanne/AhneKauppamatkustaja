@@ -33,7 +33,7 @@ public class Main {
         int i = 0;
         do {
             // luodaan uusi kaupunki
-            City c = new City();
+            City c = new City(250, 250);
 
             // tarkistetaan onko listalla jo kaupunkia samoilla koordinaateilla
             boolean cityEquals = false;

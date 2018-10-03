@@ -50,7 +50,7 @@ public class GreedyTSM {
             }
             _cities.remove(_next);
             _finalDistance += _jump;
-            _path += " -> " + _next.get_id();
+            _path += "(" + _jump + ") -> " + _next.get_id();
             _current = _next;
             _distance = 0;
             i++;
@@ -60,6 +60,10 @@ public class GreedyTSM {
     private double calculateDistance(City current, City c) {
         double powX = (current.get_x() - c.get_x() * 1.0);
         double powY = (current.get_y() - c.get_y() * 1.0);
-        return Math.sqrt(Math.pow(powX,2) + Math.pow(powY,2));
+        // palautetaan etäisyydet 2 desimaalin tarkkuudella
+        // sqrt(a² + b²) * 100 --> tulos taikuroidaan inttiin, jolloin saadaan kokonaisluku
+        // jaetaan kokonaisluku double satasella, niin saadaan paluuarvolle kivasti oikee formaatti
+        final double v = (int) Math.round(Math.sqrt(Math.pow(powX, 2) + Math.pow(powY, 2)) * 100) / (double) 100;
+        return v;
     }
 }
