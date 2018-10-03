@@ -1,8 +1,12 @@
 package tsm;
 
+// Janne Rajuvaara
+// NTK17SP 2018
+
+import java.util.Comparator;
 import java.util.Random;
 
-public class City {
+public class City implements Comparable<City>, Comparator<City> {
     // id annetaan vasta equals tarkistuksen jälkeen, joten tätä ei alusteta konstruktorissa
     // id:n arvo tullaan  saamaan kaupunkeja generoivan loopin indeksistä.
     private int _id;
@@ -12,7 +16,7 @@ public class City {
     private int _max_Y;
 
     // oletuskoordinaatisto 0-50
-    public City()
+    City()
     {
         _max_X = 50;
         _max_Y = 50;
@@ -33,7 +37,7 @@ public class City {
         _y = r.ints(0,(_max_Y + 1)).findFirst().getAsInt();
     }
 
-    public int get_x() {
+    int get_x() {
         return _x;
     }
 
@@ -41,17 +45,18 @@ public class City {
         return _y;
     }
 
-    public int get_id() {
+    int get_id() {
         return _id;
     }
 
-    public void set_id(int _id) {
+    void set_id(int _id) {
         this._id = _id;
     }
 
 
     // tarkistin onko oliolla sama lokaatio, eli onko kyseessä sama olio.
-    public boolean equals(City another)
+
+    boolean equalsTo(City another)
     {
         if (this.get_y() == another.get_y() || this.get_x() == another.get_x())
         {
@@ -63,4 +68,38 @@ public class City {
         }
     }
 
+    @Override
+    public int compareTo(City another)
+    {
+        if (this.get_id() == another.get_id())
+        {
+            return 0;
+        }
+        else if (this.get_id() < another.get_id())
+        {
+            return -1;
+        }
+        else
+        {
+            return 1;
+
+        }
+    }
+
+    @Override
+    public int compare(City o1, City o2) {
+        if (o1.get_id() < o2.get_id())
+        {
+            return -1;
+        } else if (o1.get_id() == o2.get_id())
+        {
+            return 0;
+        } else {
+            return 1;
+        }
+    }
+
+    String ToString() {
+        return "Id: " + get_id() + ", koodinaatit: " + get_x() + ", " + get_y();
+    }
 }
