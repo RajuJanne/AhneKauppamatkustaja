@@ -37,7 +37,7 @@ public class GreedyTSM {
 
 
         // toimiva algoritmi
-        int i = 0;
+
         do
         {
             for (City c : _cities)
@@ -53,7 +53,7 @@ public class GreedyTSM {
             _path += "(" + _jump + ") -> " + _next.get_id();
             _current = _next;
             _distance = 0;
-            i++;
+
         } while (_cities.size() > 0);
     }
 
