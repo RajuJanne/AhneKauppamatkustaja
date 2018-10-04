@@ -29,6 +29,14 @@ public class City implements Comparable<City>, Comparator<City> {
         _max_Y = y;
         generate_Coordinates();
     }
+    
+    public City(int x, int y, int id)
+    {
+        _max_X = x;
+        _max_Y = y;
+        _id = id;
+        generate_Coordinates();
+    }
 
     // luodaan satunnaiset pisteet x- ja y-akseleille
     private void generate_Coordinates() {

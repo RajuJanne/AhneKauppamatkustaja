@@ -25,7 +25,8 @@ public class GreedyTSM {
     String solve()
     {
         crunch();
-        return _path + ", kokonaismatka oli " + _finalDistance;
+        //return _path + ", kokonaismatka oli " + _finalDistance;
+        return "" + _finalDistance;
     }
 
     void crunch()
@@ -50,7 +51,7 @@ public class GreedyTSM {
             }
             _cities.remove(_next);
             _finalDistance += _jump;
-            _path += "(" + _jump + ") -> " + _next.get_id();
+//            _path += "(" + _jump + ") -> " + _next.get_id();
             _current = _next;
             _distance = 0;
 
