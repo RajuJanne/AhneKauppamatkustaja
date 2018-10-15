@@ -10,14 +10,8 @@ public class Main {
     public static void main(String[] args) {
 
         SortedSet<City> citySet = createCities(getCount());
-//        System.out.println("Luotu " + citySet.size() + " kaupunkia.");
-//
-//        for (City c : citySet) {
-//            System.out.println(c.ToString());
-//        }
-
         GreedyTSM gtsm = new GreedyTSM(citySet);
-        System.out.println(gtsm.solve());
+        gtsm.solve();
     }
 
     private static int getCount() {
@@ -28,8 +22,10 @@ public class Main {
     static SortedSet<City> createCities(int count)
     {
         SortedSet<City> citySet = new TreeSet<City>();
+        // koordinaatisto skaalaa dynaamisesti kaupunkien määrään
+        int size = (int)((int) count * 1.5);
         for (int i = 0; i < count; i++) {
-            citySet.add(new City(500000,500000,i));
+            citySet.add(new City(size,size,i));
         }
         return citySet;
     }
@@ -37,10 +33,12 @@ public class Main {
     static SortedSet<City> createCitiesDistinct(int count)
     {
         SortedSet<City> citySet = new TreeSet<City>();
+        // koordinaatisto skaalaa dynaamisesti kaupunkien määrään
+        int size = (int)((int) count * 1.5);
         int i = 0;
         do {
             // luodaan uusi kaupunki
-            City c = new City(1000000, 1000000);
+            City c = new City(size, size);
 
             // tarkistetaan onko listalla jo kaupunkia samoilla koordinaateilla
             boolean cityEquals = false;
