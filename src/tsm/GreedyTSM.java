@@ -4,8 +4,6 @@ package tsm;
 // NTK17SP 2018
 
 import java.util.SortedSet;
-import java.lang.Object;
-import java.util.DoubleSummaryStatistics;
 
 public class GreedyTSM {
 
@@ -22,23 +20,14 @@ public class GreedyTSM {
         _cities = cities;
     }
 
-    String solve()
-    {
-        crunch();
-        //return _path + ", kokonaismatka oli " + _finalDistance;
-        return "" + _finalDistance;
-    }
-
-    void crunch()
+    void solve()
     {
         // otetaan laiskuuden kunniaksi alkupisteeksi ensimmäinen kaupunki.
         _current = _cities.first();
         _cities.remove(_cities.first());
         _path = "" + _current.get_id();
 
-
         // toimiva algoritmi
-
         do
         {
             for (City c : _cities)
@@ -51,11 +40,12 @@ public class GreedyTSM {
             }
             _cities.remove(_next);
             _finalDistance += _jump;
-//            _path += "(" + _jump + ") -> " + _next.get_id();
+            _path += "(" + _jump + ") -> " + _next.get_id();
             _current = _next;
             _distance = 0;
 
         } while (_cities.size() > 0);
+        System.out.println(_path + ", kokonaismatka oli " + _finalDistance); 
     }
 
     private double calculateDistance(City current, City c) {
