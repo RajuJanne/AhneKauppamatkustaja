@@ -9,6 +9,7 @@ public class Main {
 
     public static void main(String[] args) {
 
+        // 100 000 kaupungilla suoritusaika on alle 5 minuuttia.
         SortedSet<City> citySet = createCities(getCount());
         GreedyTSM gtsm = new GreedyTSM(citySet);
         gtsm.solve();
