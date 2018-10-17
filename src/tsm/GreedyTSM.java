@@ -40,13 +40,17 @@ public class GreedyTSM {
             }
             _cities.remove(_next);
             _finalDistance += _jump;
+            //jätetään polku jäljittämättä. eläköön nopeus
             //_path += "(" + _jump + ") -> " + _next.get_id();
+
             _current = _next;
             _distance = 0;
 
         } while (_cities.size() > 0);
+
         //System.out.println(_path + ", kokonaismatka oli " + _finalDistance); 
-        System.out.println(", kokonaismatka oli " + _finalDistance);
+        System.out.println("kokonaismatka oli " + _finalDistance);
+
     }
 
     private double calculateDistance(City current, City c) {
